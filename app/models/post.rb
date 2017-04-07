@@ -7,6 +7,6 @@ class Post < ActiveRecord::Base
              primary_key: :id
 
   has_many :comments, class_name: "Comment"
-  # has_many :commenters, through: :comments, source: :user
+  has_many :commenters, through: :comments, source: :user
 
 end
