@@ -1,32 +1,20 @@
-<h1>Listing comments</h1>
+<h2>Comments</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Author</th>
-      <th>Post</th>
-      <th>Body</th>
-      <th>Title</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="container">
+  <div class="">
     <% @comments.each do |comment| %>
-      <tr>
-        <td><%= comment.author_id %></td>
-        <td><%= comment.post_id %></td>
-        <td><%= comment.body %></td>
-        <td><%= comment.title %></td>
-        <td><%= link_to 'Show', post_comment_path(@post, comment) %></td>
-        <td><%= link_to 'Edit', edit_post_comment_path(@post, comment) %></td>
-        <td><%= link_to 'Destroy', [@post, comment], confirm: 'Are you sure?', method: :delete %></td>      </tr>
+      <div>
+        <h2><%= comment.title %></h3>
+        <div><%= comment.body %></div>
+        <div><%= comment.author.email %></div>
+        <div><%= comment.created_at.to_time.strftime('%a %b %d %Y %l:%M %p') %></div>
+        <% if comment.author_id == current_user.id %>
+          <%= link_to 'Show', post_comment_path(@post, comment) %>
+          <%= link_to 'Edit', edit_post_comment_path(@post, comment) %>
+        <% end %>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
-<br>
-
-<%= link_to 'New Comment', new_post_comment_path(@post) %>
+<%= link_to 'New Comment', new_post_comment_path(@post), :class => 'btn btn-primary' %>

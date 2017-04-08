@@ -1,32 +1,25 @@
 <h1>Posts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Author</th>
-      <th>Body</th>
-      <th>Title</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="container">
+  <div class="">
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.author.email %></td>
-        <td><%= post.body %></td>
-        <td><%= post.title %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Comment', new_post_comment_path(post) %></td>
-      </tr>
+      <div>
+        <h3><%= link_to post.title, post %></h3>
+        <div><%= post.body %></div>
+        <div><%= post.author.email %></div>
+        <div><%= post.created_at.to_time.strftime('%a %b %d %Y %l:%M %p') %></div>
+        <% if post.author_id == current_user.id %>
+          <%= link_to 'Edit', edit_post_path(post) %>
+          <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        <div class="">
+          <%= "#{post.comments.count} Comments" %>
+        </div>
+        <%= link_to 'Add comment', new_post_comment_path(post) %>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
+  </div>
+</div>
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+<%= link_to 'New Post', new_post_path, :class => 'btn btn-primary'%>

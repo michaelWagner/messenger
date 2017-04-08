@@ -9,4 +9,5 @@ class Post < ActiveRecord::Base
   has_many :comments, class_name: "Comment"
   has_many :commenters, through: :comments, source: :user
 
+  default_scope { order("created_at DESC") }
 end

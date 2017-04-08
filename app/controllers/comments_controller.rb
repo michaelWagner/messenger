@@ -6,7 +6,6 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    format.json { head :no_content }
     @comments = @post.comments.all
   end
 
