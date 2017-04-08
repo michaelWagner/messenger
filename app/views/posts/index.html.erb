@@ -1,25 +1,18 @@
 <h1>Posts</h1>
 
+<div class="pagination-section">
+  <%= paginate @posts %>
+</div>
+
 <%= link_to 'New Post', new_post_path, :class => 'btn btn-primary'%>
 
 <div class="container">
   <div class="">
-    <% @posts.each do |post| %>
-      <div>
-        <h3><%= link_to post.title, post %></h3>
-        <div><%= post.body %></div>
-        <div><%= post.author.email %></div>
-        <div><%= post.created_at.to_time.strftime('%a %b %d %Y %l:%M %p') %></div>
-        <% if post.author_id == current_user.id %>
-          <%= link_to 'Edit', edit_post_path(post) %>
-          <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
-        <div class="">
-          <%= "#{post.comments.count} Comments" %>
-        </div>
-        <%= link_to 'Add comment', new_post_comment_path(post) %>
-      </div>
-    <% end %>
+    <%= render @posts %>
   </div>
+</div>
+
+<div class="pagination-section">
+  <%= paginate @posts %>
 </div>
 <br>

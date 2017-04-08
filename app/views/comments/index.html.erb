@@ -1,5 +1,7 @@
 <h2>Comments</h1>
 
+<%= link_to 'New Comment', new_post_comment_path(@post), :class => 'btn btn-primary' %>
+
 <div class="container">
   <div class="">
     <% @comments.each do |comment| %>
@@ -16,5 +18,3 @@
     <% end %>
   </div>
 </div>
-
-<%= link_to 'New Comment', new_post_comment_path(@post), :class => 'btn btn-primary' %>

@@ -16,7 +16,9 @@
       <div class="">
         <%= "#{@post.comments.count} Comments" %>
       </div>
-      <%= link_to 'Add comment', new_post_comment_path(@post), :class => 'btn btn-primary' %>
+      <button class="btn btn-primary" data-toggle="modal" data-target="#commentModal">
+        Add a comment
+      </button>
       <% @post.comments.each do |comment| %>
         <div>
           <h5><%= comment.title %></h5>
@@ -29,6 +31,20 @@
           <% end %>
         </div>
       <% end %>
+
+      <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModal" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="myModalLabel">Add a comment</h4>
+            </div>
+            <div class="modal-body">
+              <%= render partial: '/comments/form', locals: {post: @post, comment: @post.comments.build} %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

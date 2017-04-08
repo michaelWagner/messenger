@@ -1,0 +1,14 @@
+<div>
+  <h3><%= link_to post.title, post %></h3>
+  <div><%= post.body %></div>
+  <div><%= post.author.email %></div>
+  <div><%= post.created_at.to_time.strftime('%a %b %d %Y %l:%M %p') %></div>
+  <% if post.author_id == current_user.id %>
+    <%= link_to 'Edit', edit_post_path(post) %>
+    <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+  <div class="">
+    <%= "#{post.comments.count} Comments" %>
+  </div>
+  <%= link_to 'Add comment', new_post_comment_path(post) %>
+</div>
