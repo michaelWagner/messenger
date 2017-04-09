@@ -1,10 +1,11 @@
 <%= link_to 'Back', posts_path %>
 <div>
-  <h5><%= comment.title %></h5>
-  <div><%= comment.body %></div>
-  <div><%= comment.author.email %></div>
-  <div><%= comment.created_at.to_time.strftime('%a %b %d %Y %l:%M %p') %></div>
-  <% if comment.author_id == current_user.id %>
+  <h5><%= @comment.title %></h5>
+  <div><%= @comment.body %></div>
+  <div><%= @comment.author.email %></div>
+  <div><%= @comment.created_at.to_time.strftime('%a %b %d %Y %l:%M %p') %></div>
+  <% if @comment.author_id == current_user.id %>
     <%= link_to 'Edit', edit_post_comment_path(@post, @comment) %>
+    <%= link_to 'Delete', [@post, @comment], method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
 </div>

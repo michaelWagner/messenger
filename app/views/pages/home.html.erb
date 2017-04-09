@@ -6,9 +6,17 @@
     </p>
     <% if !user_signed_in? %>
       <p>
-      <%= link_to 'Log in', new_user_session_path, :class => 'btn btn-primary btn-lg' %>
-      <%= link_to 'Sign up', new_user_registration_path, :class => 'btn btn-primary btn-lg' %>
+        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">
+          Log in
+        </button>
+        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#signup-modal">
+          Sign up
+        </button>
       </p>
     <% end %>
   </div>
 </div>
+
+<%= render "users/shared/login_modal" %>
+
+<%= render "users/shared/sign_up_modal" %>

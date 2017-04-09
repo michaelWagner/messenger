@@ -64,7 +64,7 @@ class CommentsController < ApplicationController
     @comment = @post.comments.find(params[:id])
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to post_comments_path(@post) }
+      format.html { redirect_to @post }
       format.json { head :no_content }
     end
   end
