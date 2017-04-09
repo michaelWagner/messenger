@@ -5,7 +5,9 @@
   <div><%= @comment.author.email %></div>
   <div><%= @comment.created_at.to_time.strftime('%a %b %d %Y %l:%M %p') %></div>
   <% if @comment.author_id == current_user.id %>
-    <%= link_to 'Edit', edit_post_comment_path(@post, @comment) %>
+    <a href="#" data-toggle="modal" data-target="#comment-modal">Edit</a>
     <%= link_to 'Delete', [@post, @comment], method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
 </div>
+
+<%= render partial: '/comments/form', locals: {post: @post, comment: @comment, action_name: 'Edit', cta: 'Save Edits'} %>

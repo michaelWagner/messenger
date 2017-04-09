@@ -4,7 +4,9 @@
   <%= paginate @posts %>
 </div>
 
-<%= link_to 'New Post', new_post_path, :class => 'btn btn-primary'%>
+<button class="btn btn-primary" data-toggle="modal" data-target="#post-modal">
+  New Post
+</button>
 
 <div class="container">
   <div class="">
@@ -16,3 +18,5 @@
   <%= paginate @posts %>
 </div>
 <br>
+
+<%= render partial: '/posts/form', locals: { post: @posts.build, action_name: 'New', cta: 'Add Post' } %>

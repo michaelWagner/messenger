@@ -1,5 +1,5 @@
 <% if @post.author_id == current_user.id %>
-<%= link_to 'Edit', edit_post_path(@post), :class => 'btn btn-default' %>
+<a href="#" data-toggle="modal" data-target="#post-modal" class="btn btn-default">Edit</a>
 <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default' %>
 <% end %>
 <%= link_to 'Back', posts_path, :class => 'btn btn-default' %>
@@ -16,7 +16,7 @@
       <div class="comment-counter">
         <%= pluralize(@post.comments.count, "Comment") %>
       </div>
-      <button class="btn btn-primary" data-toggle="modal" data-target="#commentModal">
+      <button class="btn btn-primary" data-toggle="modal" data-target="#comment-modal">
         Add comment
       </button>
       <% @post.comments.each do |comment| %>
@@ -27,25 +27,13 @@
           <div><%= comment.created_at.to_time.strftime('%a %b %d %Y %l:%M %p') %></div>
           <% if comment.author_id == current_user.id %>
             <%= link_to 'Show', post_comment_path(@post, comment) %>
-            <%= link_to 'Edit', edit_post_comment_path(@post, comment) %>
             <%= link_to 'Delete', [@post, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
         </div>
       <% end %>
-
-      <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModal" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 class="modal-title" id="myModalLabel">Add a comment</h4>
-            </div>
-            <div class="modal-body">
-              <%= render partial: '/comments/form', locals: {post: @post, comment: @post.comments.build} %>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
+
+<%= render partial: '/comments/form', locals: {post: @post, comment: @post.comments.build, action_name: 'Add', cta: 'Add Comment' } %>
+<%= render partial: '/posts/form', locals: { post: @post, action_name: 'Edit', cta: 'Save Edits'} %>
