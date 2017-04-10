@@ -1,5 +1,5 @@
 == Messenger
-*A messaging board where users can post and comment on posts.*
+A messaging board where users can post and comment on posts.
 
 * Users can register and then must be authenticated before logging in (uses Devise).
 * Users login with an email and password, and have a profile with a first, last name and a description.
