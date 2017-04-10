@@ -13,11 +13,11 @@ This displays a list of posts with the title and the author’s name
 comments, ordered by date created (oldest at the top)
 * When commenting on a post, a modal pops up and the user types in their comment.
 
-● Uses latest version of Rails 4
-● Uses ruby 2.3.4
-● Rspec unit tests
-● Styled using Bootstrap 3
-● Creates a new post with a modal
-● Login modal
-● Paginates posts#index and/or posts#show (comments)
-● Uploaded to Heroku
+* Uses latest version of Rails 4
+* Uses ruby 2.3.4
+* Rspec unit tests
+* Styled using Bootstrap 3
+* Creates a new post with a modal
+* Login modal
+* Paginates posts#index and/or posts#show (comments)
+* Uploaded to Heroku
