@@ -20,4 +20,4 @@ comments, ordered by date created (oldest at the top)
 * Creates a new post with a modal
 * Login modal
 * Paginates posts#index and/or posts#show (comments)
-* Uploaded to Heroku
+* Uploaded to [Heroku](http://limitless-mountain-46206.herokuapp.com/)

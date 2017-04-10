@@ -2,7 +2,17 @@
 <div>
   <h5><%= @comment.title %></h5>
   <div><%= @comment.body %></div>
-  <div><%= @comment.author.email %></div>
+  <% if @comment.author.first_name != '' && @comment.author.last_name != ''%>
+    <div><%= "#{@comment.author.first_name} #{@comment.author.last_name}"%></div>
+  <% elsif @comment.author.first_name != '' %>
+    <div><%= "#{@comment.author.first_name}" %></div>
+  <% elsif @comment.author.last_name != ''%>
+    <div><%= "#{@comment.author.last_name}" %></div>
+  <% elsif @comment.author.username != '' %>
+    <div><%= "#{@comment.author.username}" %></div>
+  <% else %>
+    <div><%= @comment.author.email %></div>
+  <% end %>
   <div><%= @comment.created_at.to_time.strftime('%a %b %d %Y %l:%M %p') %></div>
   <% if @comment.author_id == current_user.id %>
     <a href="#" data-toggle="modal" data-target="#comment-modal">Edit</a>

@@ -1,7 +1,17 @@
 <div>
   <h3><%= link_to post.title, post %></h3>
   <div><%= post.body %></div>
-  <div><%= post.author.email %></div>
+  <% if post.author.first_name != '' && post.author.last_name != ''%>
+    <div><%= "#{post.author.first_name} #{post.author.last_name}"%></div>
+  <% elsif post.author.first_name != '' %>
+    <div><%= "#{post.author.first_name}" %></div>
+  <% elsif post.author.last_name != ''%>
+    <div><%= "#{post.author.last_name}" %></div>
+  <% elsif post.author.username != '' %>
+    <div><%= "#{post.author.username}" %></div>
+  <% else %>
+    <div><%= post.author.email %></div>
+  <% end %>
   <div><%= post.created_at.to_time.strftime('%a %b %d %Y %l:%M %p') %></div>
   <% if post.author_id == current_user.id %>
     <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
