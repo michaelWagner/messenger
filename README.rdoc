@@ -1,28 +1,23 @@
-== README
+== Messenger
+*A messaging board where users can post and comment on posts.*
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Users can register and then must be authenticated before logging in (uses Devise).
+* Users login with an email and password, and have a profile with a first, last name and a description.
+* Users can create posts (title, body, author (user_id), etc)
+* Users can comment on other users’ posts (Comments have post_id, body, author
+(user_id))
+* There is a posts index page that lists all posts (for entire site). This is the ‘homepage’.
+This displays a list of posts with the title and the author’s name
+* Posts are ordered with the most recent posts at the top of the page
+* There is a post show page, that shows a single post. Underneath the post are all the
+comments, ordered by date created (oldest at the top)
+* When commenting on a post, a modal pops up and the user types in their comment.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+● Uses latest version of Rails 4
+● Uses ruby 2.3.4
+● Rspec unit tests
+● Styled using Bootstrap 3
+● Creates a new post with a modal
+● Login modal
+● Paginates posts#index and/or posts#show (comments)
+● Uploaded to Heroku
