@@ -42,6 +42,7 @@ group :doc do
 end
 
 group :development, :test do
+  gem "database_cleaner"
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'capybara'
@@ -52,6 +53,8 @@ end
 
 group :test do
   gem 'webmock'
+  gem "selenium-webdriver"
+  gem 'email_spec'
 end
 
 # Use debugger

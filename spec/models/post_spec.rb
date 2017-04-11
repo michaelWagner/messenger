@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Post, :type => :model do
   context "without an author" do
     it "is not valid" do
-      Post.new(:author_id => "").should_not be_valid
+      expect(Post.new(:author_id => "")).to_not be_valid
     end
   end
 

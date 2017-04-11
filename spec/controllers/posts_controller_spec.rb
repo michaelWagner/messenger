@@ -9,7 +9,7 @@ RSpec.describe PostsController, :type => :controller do
 
   it "should create post" do
     before_count = Post.count
-    post = Post.create!(:author_id => 1, :id => 1, :body => "something interesting", :title => "this is a title")
+    post = Post.create!(:author_id => 1, :body => "something interesting", :title => "this is a title")
     expect(Post.count).not_to eq(before_count)
   end
 
@@ -23,9 +23,11 @@ RSpec.describe PostsController, :type => :controller do
       get :index
       expect( response ).to redirect_to( new_user_session_path )
     end
+  end
 
-    it "should let a user see all the posts" do
-      login_with create( :user )
+  describe "authenticated user" do
+    it "should be able to see posts" do
+      login_with :user
       get :index
       expect( response ).to render_template( :index )
     end

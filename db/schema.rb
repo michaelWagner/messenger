@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20170407184848) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "comments", force: true do |t|
+  create_table "comments", force: :cascade do |t|
     t.integer  "author_id",  null: false
     t.integer  "post_id",    null: false
     t.text     "body",       null: false
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20170407184848) do
   add_index "comments", ["author_id"], name: "index_comments_on_author_id", using: :btree
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
 
-  create_table "posts", force: true do |t|
+  create_table "posts", force: :cascade do |t|
     t.integer  "author_id",  null: false
     t.text     "body"
     t.string   "title"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20170407184848) do
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
